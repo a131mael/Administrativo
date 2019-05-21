@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<!-- JBoss, Home of Professional Open Source Copyright 2013, Red Hat, Inc. 
+	and/or its affiliates, and individual contributors by the @authors tag. See 
+	the copyright.txt in the distribution for a full listing of individual contributors. 
+	Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+	use this file except in compliance with the License. You may obtain a copy 
+	of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. Marker 
+	file indicating JSF 2.2 should be enabled in the application -->
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="         http://xmlns.jcp.org/xml/ns/javaee         http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Secretaria</from-outcome>
+			<to-view-id>/page/secretaria/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>Professor</from-outcome>
+			<to-view-id>/page/turma/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>Administrador</from-outcome>
+			<to-view-id>/page/secretaria/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>Mestre</from-outcome>
+			<to-view-id>/page/secretaria/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>Financeiro</from-outcome>
+			<to-view-id>/page/secretaria/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/page/aluno/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>remover</from-outcome>
+			<to-view-id>/page/aluno/removerAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/page/aluno/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/page/aluno/indexFinanceiro.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/page/aluno/cadastrarAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>exibirAluno</from-outcome>
+			<to-view-id>/page/aluno/exibirAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/page/aluno/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>remover</from-outcome>
+			<to-view-id>/page/aluno/removerContrato.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>indexFinanceiro</from-outcome>
+			<to-view-id>/page/aluno/indexFinanceiro.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/page/aluno/removerContrato.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ok</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/page/secretaria/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listagemAlunos</from-outcome>
+			<to-view-id>/page/aluno/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listagemTurmas</from-outcome>
+			<to-view-id>/page/turma/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listagemProfessores</from-outcome>
+			<to-view-id>/page/professor/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listagemAvaliacoes</from-outcome>
+			<to-view-id>/page/avaliacao/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listagemEventos</from-outcome>
+			<to-view-id>/page/calendario/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/professor/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/professor/cadastrarProfessor.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/turma/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/turma/cadastrarTurma.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/turma/cadastrarTurma.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/page/turma/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/professor/visualizarAluno.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/page/professor/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/avaliacao/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/avaliacao/cadastrarAvaliacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/calendario/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/calendario/cadastrarEvento.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/calendario/cadastrarEvento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/page/calendario/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/professor/alunosProfessor.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/professor/visualizarAluno.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/admin/listarUsuarios.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/admin/cadastrarUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/secretaria/exAlunos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/recado/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/recado/cadastrarRecado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/aluno/canceladas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/page/secretaria/alunosUltimoAnoLetivo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/page/aluno/cadastrarAluno.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<application />
+</faces-config>

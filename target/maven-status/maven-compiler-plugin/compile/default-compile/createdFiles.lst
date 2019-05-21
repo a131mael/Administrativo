@@ -1,0 +1,15 @@
+br\com\administrativo\model\Configuracao_.class
+br\com\service\escola\ConfiguracaoService.class
+br\com\service\escola\FinanceiroEscolaService.class
+br\com\administrativo\model\Boleto.class
+br\com\service\util\Service.class
+br\com\aff\Administrativo\CNAB_240\CONSTANTES.class
+br\com\administrativo\model\Configuracao.class
+br\com\aff\Administrativo\CNAB_240\CNAB240.class
+br\com\service\util\Util.class
+br\com\aff\Administrativo\CNAB_240\RotinaAutomatica.class
+br\com\service\util\ServiceLocator.class
+br\com\service\escola\FinanceiroEscolarService.class
+br\com\aff\Administrativo\CNAB_240\CNAB240_RETORNO_SICOOB.class
+br\com\administrativo\model\Pagador.class
+br\com\aff\Administrativo\CNAB_240\OfficeUtil.class

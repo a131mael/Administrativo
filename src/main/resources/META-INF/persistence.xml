@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://java.sun.com/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd">
+  
+    <persistence-unit name="EscolaDS" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
+        <jta-data-source>java:/EscolaDS</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="EscolarDS" transaction-type="JTA">
+		<description>EngineWeb Persistence Unit</description>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:/EscolarDS</non-jta-data-source>
+		<properties>
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.transaction.flush_before_completion"	value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+		</properties>
+	</persistence-unit>
+    
+</persistence>
