@@ -1,4 +1,4 @@
-package br.com.service.escola;
+package br.com.service.administrativo.escola;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import br.com.administrativo.model.Boleto;
-import br.com.service.util.Service;
+import br.com.service.administrativo.util.Service;
 
 @Stateless
 public class FinanceiroEscolarService extends Service {
@@ -22,7 +22,7 @@ public class FinanceiroEscolarService extends Service {
 	private EntityManager em;
 
 	@Inject
-	private ConfiguracaoService configuracaoService;
+	private ConfiguracaoEscolaService configuracaoService;
 
 
 	public double getPrevisto(int mes) {
@@ -114,7 +114,7 @@ public class FinanceiroEscolarService extends Service {
 		sql.append(numeroBoleto);
 		
 		sql.append(" and bol.contrato_id = cont.id ");
-		sql.append( " and UPPER(trim( REPLACE(REPLACE(REPLACE(cont.nomeresponsavel,'.',''),'Ã' ,'' ),'Ç',''))) = "  );
+		sql.append( " and UPPER(trim( REPLACE(REPLACE(REPLACE(cont.nomeresponsavel,'.',''),'Ãƒ' ,'' ),'Ã‡',''))) = "  );
 		sql.append( "UPPER('" );
 		sql.append( nomePagador.trim() );
 		sql.append( "')" );
@@ -169,6 +169,7 @@ public class FinanceiroEscolarService extends Service {
 		sql.append(" valorpago = ");
 		sql.append(0);
 		sql.append(", datapagamento = null");
+		sql.append(", protestado = true");
 		sql.append(", conciliacaoporextrato = ");
 		sql.append(extrato);
 		
@@ -225,6 +226,49 @@ public class FinanceiroEscolarService extends Service {
 			
 		} catch (Exception exp) {
 		}
+		
+		em.flush();
+	}
+	
+	
+	
+	public void updateBoletoProtesto() {
+		em.flush();
+		StringBuilder sql = new StringBuilder();
+		sql.append("UPDATE boleto as bol ");
+		sql.append("SET");
+		sql.append(" valorpago = ");
+		sql.append(0);
+		sql.append(", datapagamento = null");
+		sql.append(", protestado = true");
+		
+		sql.append(" from ContratoAluno as cont ");
+		sql.append(" WHERE ");
+		
+		sql.append(" and bol.contrato_id = cont.id ");
+		sql.append(" and cont.protestado = true ");
+		sql.append(" and cont.protestado = true ");
+		sql.append(" and bol.valorpago < 10 ");
+		sql.append(" and bol.datapagamento = null ");
+		sql.append(" and cont.enviadoProtestoDefinitivo = true ");
+		try{
+			em.flush();
+			Query query = em.createNativeQuery(sql.toString());
+			int at = query.executeUpdate();
+			System.out.println("boletosAtualizados = " + at);
+		}catch(Exception e){
+			Query query2 = em.createNativeQuery(sql.toString());
+			int at = query2.executeUpdate();
+			
+			System.out.println("boletosAtualizados = " + at);
+		}
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+		}
+		
+		
 		
 		em.flush();
 	}

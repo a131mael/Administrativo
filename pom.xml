@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<licenses>
 		<license>
@@ -26,12 +27,31 @@
 	<groupId>br.com.aff</groupId>
 	<artifactId>Administrativo</artifactId>
 	<packaging>ejb</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 
 	<name>Administrativo</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+		
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
+			<scope>compile</scope>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.ejb/javax.ejb-api -->
 		<dependency>
@@ -40,50 +60,35 @@
 			<scope>compile</scope>
 			<version>3.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.aaf.financeiro</groupId>
 			<artifactId>Financeiro</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- <dependency> <groupId>net.wasdev.maven.tools.targets</groupId> <artifactId>liberty-target</artifactId> 
 			<version>RELEASE</version> <type>pom</type> <scope>provided</scope> </dependency> -->
 
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<scope>provided</scope>
-			<version>2.0-EDR1</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.spec.javax.annotation</groupId>
 			<artifactId>jboss-annotations-api_1.2_spec</artifactId>
-			<version>1.0.0.Final</version>
-			<scope>provided</scope>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<scope>provided</scope>
-			<version>1.0.0.Final</version>
+			<scope>compile</scope>
 		</dependency>
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.jboss.spec.javax.servlet</groupId> -->
-		<!-- <artifactId>jboss-servlet-api_3.1_spec</artifactId> -->
-		<!-- <scope>provided</scope> -->
-		<!-- <version>1.0.0.Final</version> -->
-		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<scope>provided</scope>
-			<version>5.2.4.Final</version>
+			<scope>compile</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -95,8 +100,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
-			<scope>provided</scope>
-			<version>5.2.0.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
@@ -106,31 +110,33 @@
 			<type>jar</type>
 		</dependency>
 
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.15</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.15</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.15</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-                            <artifactSet>
-                                <includes>
-                                    <include>org.aaf.financeiro:Financeiro</include>
-                                </includes>
-                            </artifactSet>
-                        </configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -148,50 +154,11 @@
 					<ejbVersion>3.1</ejbVersion>
 				</configuration>
 			</plugin>
-
-
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>debug.JanusClient</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
+		
 		</plugins>
 	</build>
-	
-	<profiles>
-
-		<profile>
-			<!-- When built in OpenShift the 'openshift' profile will be used when 
-				invoking mvn. -->
-			<!-- Use this profile for any OpenShift specific customization your app 
-				will need. -->
-			<!-- By default that is to put the resulting archive into the 'deployments' 
-				folder. -->
-			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-			<id>openshift</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>${version.war.plugin}</version>
-						<configuration>
-							<outputDirectory>deployments</outputDirectory>
-							<warName>ROOT</warName>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-	</profiles>
-	
+<!-- 
+	<parent> <groupId>org.aaf.administrativoEar</groupId> <artifactId>AdministrativoEar</artifactId> 
+		<version>0.0.1-SNAPSHOT</version> </parent> -->
 	
 </project>

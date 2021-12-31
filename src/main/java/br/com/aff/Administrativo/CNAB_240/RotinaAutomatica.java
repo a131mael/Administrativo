@@ -13,8 +13,9 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
-import br.com.service.util.Util;
-
+import br.com.service.administrativo.escola.FinanceiroEscolaService;
+import br.com.service.administrativo.escola.FinanceiroEscolarService;
+import br.com.service.administrativo.util.Util;
 
 @Singleton
 @Startup
@@ -23,21 +24,64 @@ public class RotinaAutomatica {
 	
 	@Inject
 	private CNAB240 cnab240;
+	
+	@Inject
+	private FinanceiroEscolarService financeiroEscolarService;
+	
+	@Inject
+	private FinanceiroEscolaService financeiroEscolaService;
 		
-	@Schedule( minute = "*/4", hour = "*", persistent = false)
-	public void automaticTimeout() {
+	@Schedule(minute = "*/2", persistent = false)
+	public void importarPagamento() {
 		System.out.println("Importando pagamentos do banco......");
 		cnab240.importarPagamentosCNAB240();
 	}
 	
-	@Schedule( minute = "*/8", hour = "*", persistent = false)
-	public void geradorDeCnabDeEnvio() {
-		/*System.out.println("Gerando Arquivo CNAB de envio......");
-		int mes = Util.getMesInt(new Date());
-		mes ++;
-		cnab240.gerarCNAB240DeEnvio(mes);*/
-	}
+	/*@Schedule(hour = "23", persistent = false)
+	public void importarPagamento2() {
+		System.out.println("Importando pagamentos do banco......");
+		cnab240.importarPagamentosCNAB240();
+	}*/
 	
+	/*@Schedule( minute = "50", hour = "9", persistent = false)
+	public void atualizarBoletoProtestado() {
+		System.out.println("Setando boleto como protestado.....");
+		try{
+			financeiroEscolarService.updateBoletoProtesto();
+		}catch(Exception e){
+		}
+		try{
+			financeiroEscolaService.updateBoletoProtesto();
+		}catch(Exception e){
+			
+		}
+	}
+	*/
+/*	@Schedule( minute = "50", hour = "22", persistent = false)
+	public void atualizarBoletoProtestado2() {
+		System.out.println("Setando boleto como protestado.....");
+		try{
+			financeiroEscolarService.updateBoletoProtesto();
+		}catch(Exception e){
+		}
+		try{
+			financeiroEscolaService.updateBoletoProtesto();
+		}catch(Exception e){
+			
+		}
+	}*/
+	
+	@Schedule( minute = "*/2", hour = "*", persistent = false)
+	public void geradorDeCnabDeEnvio() {
+		System.out.println("Gerando Arquivo CNAB de envio......");
 
+		int mes = 0;
+		Date d = new Date();
+		Util u = new Util();
+		mes = u.getMesInt(d);
+		
+		mes ++;
+		cnab240.gerarCNAB240DeEnvio(mes);
+	}
 
 }

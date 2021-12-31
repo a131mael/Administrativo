@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.service.util;
+package br.com.service.administrativo.util;
 
 public class Service {
 	

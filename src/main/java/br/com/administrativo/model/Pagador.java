@@ -97,5 +97,17 @@ public class Pagador {
 		this.boletos = boletos;
 	}
 
+	public org.aaf.financeiro.model.Pagador getPagadorFinanceiro(){
+		org.aaf.financeiro.model.Pagador pagador = new org.aaf.financeiro.model.Pagador();
+		pagador.setBairro(bairro);
+		pagador.setCep(cep);
+		pagador.setCidade(cidade);
+		pagador.setCpfCNPJ(cpfCNPJ);
+		pagador.setEndereco(endereco);
+		pagador.setNome(nome);
+		pagador.setNossoNumero(nossoNumero);
+		pagador.setUF(UF);
+		return pagador;
+	}
     
 }

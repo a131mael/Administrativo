@@ -56,10 +56,10 @@ public class Boleto  {
     private String endereco;
 
     //TODOS DADOS DO PAGADOR
-    private String nossonumero;
+    private String UF;
     
     //TODOS DADOS DO PAGADOR
-    private String UF;
+    private String bairro;
     
 	public Long getId() {
 		return id;
@@ -149,14 +149,6 @@ public class Boleto  {
 		UF = uF;
 	}
 
-	public String getNossonumero() {
-		return nossonumero;
-	}
-
-	public void setNossonumero(String nossonumero) {
-		this.nossonumero = nossonumero;
-	}
-
 	public String getEndereco() {
 		return endereco;
 	}
@@ -195,6 +187,14 @@ public class Boleto  {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
     
     
