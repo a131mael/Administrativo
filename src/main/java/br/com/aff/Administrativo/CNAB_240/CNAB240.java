@@ -78,13 +78,9 @@ public class CNAB240 {
 							String numeroDocumentoExtrato = String.valueOf(numeroDocumentoLong);
 						}
 						System.out.println(pagador.getNome() + "  " + numeroDocumentoLong);
-						if (10027 == numeroDocumentoLong) {
-							System.out.println("fdff");
-						}
 
 						if (numeroDocumentoLong != null && numeroDocumentoLong > 0) {
-							if (boletoCNAB.getNumeroDaConta() != null
-									&& boletoCNAB.getNumeroDaConta().equalsIgnoreCase("49469")) {
+							if (boletoCNAB.getNumeroDaConta() != null	&& boletoCNAB.getNumeroDaConta().equalsIgnoreCase("49469")) {
 								if (!(boletoCNAB.isDecurso() != null && boletoCNAB.isDecurso())) {
 									financeiroEscolaService.updateBoleto(numeroDocumentoLong, pagador.getNome(),
 											boletoCNAB.getValorPago(), boletoCNAB.getDataPagamento(), extratoBancario);

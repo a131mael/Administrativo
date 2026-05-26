@@ -34,11 +34,11 @@ public class CNAB240_RETORNO_SICOOB {
 
 			// segmento U
 			b.setValorPago(Double.parseDouble(getValorPago(arquivo.get(j + 1))) / 100);
-			if ((b.getMovimento().equalsIgnoreCase("09") || b.getMovimento().equalsIgnoreCase("02"))
-					&& b.getValorPago() == 0D) {
+			if ((b.getMovimento().equalsIgnoreCase("09") )&& (b.getValorPago() == 0D || b.getValorPago() == null )) {
 				b.setValorNominal(Double.parseDouble(getValorNominal(arquivo.get(j))));
 				b.setValorPago(b.getValorNominal());
 			}
+				
 			b.setDataPagamento(OfficeUtil.retornaData(getDataEvento(arquivo.get(j + 1))));
 			List<Boleto> boletos = new ArrayList<Boleto>();
 			boletos.add(b);

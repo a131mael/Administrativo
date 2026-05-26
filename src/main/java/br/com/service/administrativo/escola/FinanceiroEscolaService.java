@@ -112,10 +112,10 @@ public class FinanceiroEscolaService extends Service {
 		sql.append(numeroBoleto);
 		
 		sql.append(" and bol.contrato_id = cont.id ");
-		sql.append( " and UPPER(trim( REPLACE(REPLACE(REPLACE(cont.nomeresponsavel,'.',''),'Ã' ,'' ),'Ç',''))) =  "  );
-		sql.append( "UPPER('" );
+		sql.append( " and UPPER(trim( REPLACE(REPLACE(REPLACE(REPLACE(cont.nomeresponsavel,'.',''),'Ã' ,'' ),'Ç','','É','')))) like  "  );
+		sql.append( "UPPER('%" );
 		sql.append( nomePagador.trim() );
-		sql.append( "')" );
+		sql.append( "%')" );
 		try{
 			em.flush();
 			Query query = em.createNativeQuery(sql.toString());
